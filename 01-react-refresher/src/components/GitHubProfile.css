@@ -1,0 +1,97 @@
+.github-profile-root {
+  background-color: #121212;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  padding: 24px;
+}
+
+.github-profile-card {
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ffd700;
+  text-align: center;
+}
+
+.github-profile-avatar-wrapper {
+  margin-bottom: 16px;
+}
+
+.github-profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #ffd700;
+}
+
+.github-profile-name {
+  margin: 0 0 8px 0;
+  color: #ffd700;
+}
+
+.github-profile-username {
+  margin: 0 0 16px 0;
+  color: #cccccc;
+}
+
+.github-profile-bio {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.github-profile-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 16px;
+}
+
+.github-profile-stat {
+  text-align: center;
+}
+
+.github-profile-stat-value {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+.github-profile-stat-label {
+  font-size: 12px;
+  color: #cccccc;
+}
+
+.github-profile-button {
+  background-color: #ffd700;
+  color: #121212;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.github-profile-button:hover {
+  background-color: #e6c200;
+}
+
+.status-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #121212;
+  color: #ffd700;
+  font-family: Arial, sans-serif;
+  padding: 0 16px;
+  text-align: center;
+}
