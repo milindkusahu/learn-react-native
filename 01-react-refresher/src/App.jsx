@@ -1,35 +1,20 @@
-import { useState, useEffect } from "react";
-import GitHubProfile from "./components/GitHubProfile";
+import React, { useState } from "react";
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
+  const [name, setName] = useState("");
 
-  useEffect(() => {
-    const fetchGithubData = async () => {
-      try {
-        setIsLoading(true);
-        setError(null);
-        const response = await fetch(
-          "https://api.github.com/users/milindkusahu",
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        const data = await response.json();
-        setData(data);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchGithubData();
-  }, []);
-
-  return <GitHubProfile isLoading={isLoading} data={data} error={error} />;
+  return (
+    <div>
+      <h1>Your Name: {name}</h1>
+      <div>
+        <input
+          type="text"
+          placeholder="Enter your name"
+          onChange={(e) => setName(e.target.value)}
+        />
+      </div>
+    </div>
+  );
 };
 
 export default App;

@@ -72,3 +72,31 @@ Hooks - it is just a function/utility in which the prefix starts with "use_funct
   - With empty dependency Array: Component will Trigger re-render only when component mounts
   - With state in dependency Array: The component will re-render when this state or props changes
 - Cleanup:
+
+### Event Handling
+
+- Respond to User interactions: Mouse, Keyboard, Form, Touch, onScroll, onResize events
+- In React we say event as Synthetic Event (Cross browser wrapper)
+  - Works consistently across all browsers, also improves performance
+
+SyntheticEvent --> NativeElement --> Browser
+
+### Form Handling
+
+Two types:
+
+1. Controlled Input
+
+- Input is controlled by React State
+- Single source of truth
+- Easy validation
+- Works well with React ecosystem
+
+2. UnControlled Input
+
+- Input manages its own state (DOM handles it)
+- No React State
+- Value accessed only when needed
+- Hard to Validate
+- No Reactive
+- Less control
