@@ -1,102 +1,236 @@
 # React Refresher
 
-## Agenda - Day 01
+Short revision notes for React basics before moving into React Native.
 
-1. What is React and why do we even need it?
-2. Basic Setup of React App
-3. Folder Structure breakdown
-4. JSX Fundamentals
+## Table of Contents
+
+- [Day 01 Agenda](#day-01-agenda)
+- [Day 01 Notes](#day-01-notes)
+- [JSX](#jsx)
+- [Hot Reloading](#hot-reloading)
+- [Components](#components)
+- [Props](#props)
+- [Props vs State](#props-vs-state)
+- [Conditional Rendering](#conditional-rendering)
+- [Lists and Keys](#lists-and-keys)
+- [Day 02 Agenda](#day-02-agenda)
+- [Day 02 Notes](#day-02-notes)
+- [Virtual DOM](#virtual-dom)
+- [React Hooks](#react-hooks)
+- [Side Effects](#side-effects)
+- [useState](#usestate)
+- [State Update Pattern](#state-update-pattern)
+- [useEffect](#useeffect)
+- [Component Lifecycle with useEffect](#component-lifecycle-with-useeffect)
+- [Custom Hooks](#custom-hooks)
+- [Context API](#context-api)
+- [Event Handling](#event-handling)
+- [Form Handling](#form-handling)
+- [Controlled Input](#controlled-input)
+- [Uncontrolled Input](#uncontrolled-input)
+
+## Day 01 Agenda
+
+1. What React is and why we use it
+2. Basic React app setup
+3. Folder structure overview
+4. JSX fundamentals
 5. Components
 6. Props
 
-- JSX:
-  -> JavaScript XML (Help us write HTML like code)
-  -> JSX must return only one parent element
-- Hot Reloading
-- Component -> Function that returns JSX
-- React Fragment
-- In React Data flow from Top to Bottom
-- Prop drilling -> Parent passes data to deeply nested component (performance compromise, hard debugging)
+## Day 01 Notes
 
-## Agenda - Day 02
+### JSX
 
-1. Fundamentals of Virtual Dom
-2. Hooks in React js ( usestate and useEffect )
-3. Event handling in React
-4. Controlled vs Uncontrolled inputs with form handling
+JSX means JavaScript XML. It lets us write HTML-like code inside JavaScript.
 
-### What is Virtual DOM in React?
+- JSX must return one parent element.
+- Use a React Fragment when you do not want to add an extra wrapper element.
+- Example fragment syntax: `<>...</>`
 
-- Virtual DOM is a light weight in memory representation of actual DOM
-- React creates Virtual DOM
+### Hot Reloading
 
-Actual DOM -> Window -> Document -> HTML
+Hot reloading updates the app quickly after code changes, without manually refreshing the full app every time.
 
-#### How it Works?
+### Components
 
-1. Initial Render - React creates Virtual DOM, then react renders it in the Real DOM
-2. State/Props update - React creates new virtual DOM
-3. Diffing - React compares old Virtual DOM with new Virtual DOM
-4. Find minimal changes
-5. The real dom gets updated
+A component is a function that returns JSX. Components help split the UI into small reusable parts.
+
+### Props
+
+Props are data passed from a parent component to a child component.
+
+- React data flow is top to bottom.
+- Props are read-only inside the child component.
+- Prop drilling means passing data through many nested components.
+- Prop drilling can make debugging harder in large apps.
+
+### Props vs State
+
+Props come from a parent component. State belongs to the component itself.
+
+- Use props to receive data.
+- Use state to store data that changes.
+- Props are read-only.
+- State can be updated with a setter function.
+
+### Conditional Rendering
+
+Conditional rendering means showing UI based on a condition.
+
+Common patterns:
+
+- `if` statements before `return`
+- Ternary operator: `isLoggedIn ? <Home /> : <Login />`
+- `&&` operator: `isLoading && <Loader />`
+
+### Lists and Keys
+
+Use `.map()` to render a list of items in React.
+
+- Each list item needs a unique `key`.
+- Keys help React track which item changed.
+- Avoid using array index as key if the list can change order.
+
+## Day 02 Agenda
+
+1. Virtual DOM fundamentals
+2. React hooks: `useState` and `useEffect`
+3. Event handling
+4. Controlled and uncontrolled form inputs
+
+## Day 02 Notes
+
+### Virtual DOM
+
+The Virtual DOM is a lightweight in-memory copy of the real DOM. React uses it to update the UI efficiently.
+
+Real DOM path: `window -> document -> html`
+
+How it works:
+
+1. React creates a Virtual DOM during the first render.
+2. When state or props change, React creates a new Virtual DOM.
+3. React compares the old and new Virtual DOM.
+4. React finds the smallest required changes.
+5. React updates only the needed parts of the real DOM.
 
 ### React Hooks
 
-Hooks - it is just a function/utility in which the prefix starts with "use_function"
+Hooks are React functions that let functional components use React features like state, effects, refs, and context.
 
-- useState
-- useEffect
-- useMemo
-- useCallback
-- useRef
-- useContext
+Common hooks:
 
--> Side Effects - Any operation that affects something outside the scope of the component function being executed. While React components are designed to be "pure" (calculating the UI based only on props and state), side effects allow them to interact with the "outside world".
+- `useState`
+- `useEffect`
+- `useMemo`
+- `useCallback`
+- `useRef`
+- `useContext`
 
-#### Hooks Rules
+Hook rules:
 
-1. Hook must be called at top level
-2. You can't call hooks inside a nested function
-3. Hooks are used in Functional component
+1. Call hooks only at the top level.
+2. Do not call hooks inside loops, conditions, or nested functions.
+3. Use hooks only inside functional components or custom hooks.
 
-#### useState Hook
+### Side Effects
 
-- It is a built-in React function that allows us to add/manage state to functional components.
+A side effect is any work that touches something outside the component render logic.
 
-#### useEffect Hook
+Common examples:
 
-- Run side effects after rendering
-- Use case: API calling, Timers,
-- Dependency
-  - Without dependency Array: Runs on every render
-  - With empty dependency Array: Component will Trigger re-render only when component mounts
-  - With state in dependency Array: The component will re-render when this state or props changes
-- Cleanup:
+- API calls
+- Timers
+- Subscriptions
+- Updating the document title
+- Reading or writing browser storage
+
+### useState
+
+`useState` adds state to a functional component. Use it when the UI needs to remember and update a value.
+
+### State Update Pattern
+
+Do not directly change state. Create a new value and update state with the setter function.
+
+- For numbers or strings, pass the new value.
+- For arrays, use methods like `map`, `filter`, or spread.
+- For objects, use spread and update only the needed property.
+- Use callback state when the new state depends on the old state.
+
+Example pattern: `setCount((prev) => prev + 1)`
+
+### useEffect
+
+`useEffect` runs side effects after rendering.
+
+Common use cases:
+
+- Fetching API data
+- Starting timers
+- Listening to events
+- Running code when a value changes
+
+Dependency array behavior:
+
+- No dependency array: runs after every render.
+- Empty dependency array `[]`: runs once after the component mounts.
+- With dependencies `[value]`: runs when the listed value changes.
+
+Cleanup is used to stop side effects, such as clearing timers or removing event listeners.
+
+### Component Lifecycle with useEffect
+
+Functional components do not use class lifecycle methods. `useEffect` covers the same ideas in a simpler way.
+
+- Mount: component appears on screen.
+- Update: state or props change.
+- Unmount: component is removed from screen.
+- Cleanup runs before unmount or before the effect runs again.
+
+### Custom Hooks
+
+A custom hook is a reusable function that uses React hooks inside it.
+
+- Custom hook names must start with `use`.
+- They help share logic between components.
+- Example use cases: fetching data, form handling, theme logic.
+
+### Context API
+
+Context API helps share data without passing props through every level.
+
+- Useful for theme, auth user, language, and app settings.
+- Helps reduce prop drilling.
+- Best for shared data used by many components.
 
 ### Event Handling
 
-- Respond to User interactions: Mouse, Keyboard, Form, Touch, onScroll, onResize events
-- In React we say event as Synthetic Event (Cross browser wrapper)
-  - Works consistently across all browsers, also improves performance
+Event handling means responding to user actions like clicks, typing, scrolling, form changes, and touch events.
 
-SyntheticEvent --> NativeElement --> Browser
+React uses Synthetic Events. They are cross-browser wrappers around native browser events.
+
+Event flow: `SyntheticEvent -> NativeEvent -> Browser`
 
 ### Form Handling
 
-Two types:
+Forms can be handled in two main ways: controlled inputs and uncontrolled inputs.
 
-1. Controlled Input
+### Controlled Input
 
-- Input is controlled by React State
-- Single source of truth
-- Easy validation
-- Works well with React ecosystem
+A controlled input is managed by React state.
 
-2. UnControlled Input
+- React is the single source of truth.
+- Easy to validate.
+- Easy to reset or update from code.
+- Best for most React forms.
 
-- Input manages its own state (DOM handles it)
-- No React State
-- Value accessed only when needed
-- Hard to Validate
-- No Reactive
-- Less control
+### Uncontrolled Input
+
+An uncontrolled input is managed by the DOM itself.
+
+- No React state is used for every change.
+- Value is read only when needed.
+- Less code for simple cases.
+- Harder to validate and control.
