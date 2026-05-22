@@ -39,3 +39,13 @@
 - Responsive design
 - `useWindowDimensions`
 - `useColorScheme`
+
+### Day 5: React Navigation
+
+1. What is react navigation and why do we even need navigation?
+2. Installation and setup of react navigation.
+3. Moving between Screens (links , useNavigation and their methods )
+4. Types of navigation (stack , tabs , drawers )
+5. Stack Navigation in depth
+6. Tab Navigation in depth
+7. Drawer Navigation in depth
