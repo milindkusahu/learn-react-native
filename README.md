@@ -42,10 +42,23 @@
 
 ### Day 5: React Navigation
 
-1. What is react navigation and why do we even need navigation?
-2. Installation and setup of react navigation.
-3. Moving between Screens (links , useNavigation and their methods )
-4. Types of navigation (stack , tabs , drawers )
-5. Stack Navigation in depth
-6. Tab Navigation in depth
-7. Drawer Navigation in depth
+- What is React Navigation and why do we need navigation?
+- Installation and setup of React Navigation
+- Moving between screens with links and `useNavigation`
+- Types of navigation: stack, tabs, and drawers
+- Stack navigation in depth
+- Tab navigation in depth
+- Drawer navigation in depth
+
+### Day 6: Expo Router
+
+- File-based routing fundamentals
+- Static routes
+- Dynamic routes: `[id]`
+- Route groups: `(auth)`
+- `_layout.tsx` and nested layouts
+- `+not-found`
+- Protected routes and stacks
+- Tabs: JS, native, and custom
+- Drawer navigation
+- App icons
